@@ -28,11 +28,12 @@ const HomeScreen = ({ navigation }) => {
 
     // Save travelPlannerData to AsyncStorage
     try {
-      await AsyncStorage.setItem('TravelPlanner', JSON.stringify(travelPlannerData));
+      await AsyncStorage.setItem('', JSON.stringify(travelPlannerData));
       console.log('Travel planner data saved successfully!');
     } catch (error) {
       console.log('Error saving travel planner data:', error);
     }
+    navigation.navigate('Summary', travelPlannerData);
 
     // Download flight data and filter flights based on destination and start location
     const flightData = await downloadFlightData(destination, startLocation);
